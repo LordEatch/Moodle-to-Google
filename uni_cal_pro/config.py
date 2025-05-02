@@ -35,13 +35,9 @@ def install_missing_packages():
 
     requirements = get_required_packages(requirements_path)
 
-    print(requirements)
-
     for package in requirements:
-        print()
-        print(f"checking {package}")
         if not package_installed(package):
-            print(f"installing {package}")
+            print(f"\tInstalling package: {package}...")
             install_package(package)
 
 # NOTE This runs every time this module is imported. It needs to be this way so that missing packages are installed prior to attempting to import them in main.py.

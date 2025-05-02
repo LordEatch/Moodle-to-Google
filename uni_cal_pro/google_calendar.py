@@ -26,7 +26,7 @@ def get_user_credentials():
   API_SECRET_FILENAME = "credentials.json"
 
   creds = None
-
+  
   user_signed_in_token_json_path = os.path.join(config.TEMP_DIRECTORY_PATH, API_TOKEN_FILENAME)
   if os.path.exists(user_signed_in_token_json_path):
     creds = Credentials.from_authorized_user_file(user_signed_in_token_json_path, SCOPES)
@@ -38,13 +38,13 @@ def get_user_credentials():
       creds.refresh(Request())
     # Begin the google sign in flow using the api secret file credentials.json.
     else:
-      credentials_path = os.path.join(config.TEMP_DIRECTORY_PATH, API_SECRET_FILENAME)
+      credentials_path = API_SECRET_FILENAME
 
       try:
         flow = InstalledAppFlow.from_client_secrets_file(credentials_path, SCOPES)
         creds = flow.run_local_server(port=0)
       except FileNotFoundError:
-        raise FileNotFoundError(f"Please ensure that the api secret file {API_SECRET_FILENAME} is in {config.TEMP_DIRECTORY_PATH}.")
+        raise FileNotFoundError(f"Please ensure that the api secret file {API_SECRET_FILENAME} is in the local directory.")
     
     # Save the credentials for the next run.
     with open(user_signed_in_token_json_path, "w") as token:

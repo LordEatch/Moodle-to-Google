@@ -15,7 +15,15 @@ moodle_filepath = os.path.join(config.TEMP_DIRECTORY_PATH, MOODLE_FILENAME)
 def filter_events(events, unwanted_summary_substrings):
     """Take a list of ics events. Return a new list with events whose name does not contain any of the strings from unwanted_summary_substrings."""
     
+    if not unwanted_summary_substrings:
+        return events
+
     filtered_events = []
+
+    print("START TEST")
+    print(events)
+    print(unwanted_summary_substrings)
+    print("END TEST")
 
     for substring in unwanted_summary_substrings:
         filtered_events += [e for e in events if substring not in e.name]

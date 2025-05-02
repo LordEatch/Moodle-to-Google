@@ -21,3 +21,5 @@ Thumbs.db
 
 # Temporary files downloaded by the script.
 temp/
+
+credentials.json

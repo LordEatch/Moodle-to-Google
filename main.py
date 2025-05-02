@@ -21,6 +21,8 @@ def main():
     exclusive_filters = menu.input_moodle_event_filters()
     filtered_events = moodle.filter_calendar(moodle.moodle_filepath, exclusive_filters)
 
+    print(filtered_events)
+
     # Get the desired calendar.
     calendar_id = menu.input_google_calendar_id(service)
 
