@@ -13,29 +13,22 @@ moodle_filepath = os.path.join(config.TEMP_DIRECTORY_PATH, MOODLE_FILENAME)
 
 
 def filter_events(events, unwanted_summary_substrings):
-    """Take a list of ics events. Return a new list with events whose name does not contain any of the strings from unwanted_summary_substrings."""
-    
-    if not unwanted_summary_substrings:
-        return events
+    """Take a set of ics events. Return a new list with events whose name does not contain any of the strings from unwanted_summary_substrings."""
 
-    filtered_events = []
+    unwanted_events = {
+        e for e in events
+        for substring in unwanted_summary_substrings
+        if substring in e.name.lower()
+        }
 
-    print("START TEST")
-    print(events)
-    print(unwanted_summary_substrings)
-    print("END TEST")
-
-    for substring in unwanted_summary_substrings:
-        filtered_events += [e for e in events if substring not in e.name]
-
-    return filtered_events
+    return events.difference(unwanted_events)
 
 def filter_calendar(calendar_path, unwanted_summary_substrings):
     # Instantiate a calendar object by reading the calendar file's contents.
     with open(calendar_path) as calendar_txt:
         calendar = ics.Calendar(calendar_txt.read())
 
-    filtered_events = filter_events(calendar.events, unwanted_summary_substrings)
+    filtered_events = filter_events(set(calendar.events), unwanted_summary_substrings)
 
     return filtered_events
 

@@ -5,6 +5,8 @@ from uni_cal_pro import google_calendar
 DIVIDER = "-" * 80
 
 
+# NOTE All inputs must be converted to lowercase (if case-insensitive) in this file rather than later.
+
 def input_moodle_url():
     """
     Prompt the user to enter a Moodle calendar URL, with validation and saved URL fallback.
@@ -38,14 +40,14 @@ def input_moodle_url():
 
 def input_moodle_event_filters():
     """
-    Ask the user what tags they would like to use to exclusively filter moodle events.
+    Ask the user what tags they would like to use to exclusively filter moodle events. Returns a set.
     """
 
     print(DIVIDER)
     print("Enter any exclusive filters for event summaries.")
     print("Separate filters with commas (e.g., quiz, assignment). Leave blank for no filters.")
 
-    filters_input = input("> ")
+    filters_input = input("> ").lower()
     filters = {f.strip() for f in filters_input.split(',') if f.strip()}
 
     print(DIVIDER)
