@@ -129,4 +129,4 @@ def add_events(service, calendar_id, events):
           add_event(service, calendar_id, event)
           event_tally += 1
       
-  print(f"\t{event_tally} events added to Google Calendar.")
+  print(f"\t{event_tally} event(s) added to Google Calendar.")
