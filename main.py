@@ -7,8 +7,6 @@ from uni_cal_pro import utility
 
 
 def main():
-    config.install_missing_packages()
-
     # Create the local temporary folder.
     os.makedirs(config.TEMP_DIRECTORY_PATH, exist_ok=True)
 

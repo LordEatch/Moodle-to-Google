@@ -1,9 +1,6 @@
 import ics
 import os
-import requests
 from uni_cal_pro import config
-from uni_cal_pro import menu
-from uni_cal_pro import utility
 
 
 MOODLE_URL_FILENAME = "moodle_url.txt"

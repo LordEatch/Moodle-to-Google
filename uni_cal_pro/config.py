@@ -1,5 +1,5 @@
-from importlib import util
 import os
+import pkg_resources
 import subprocess
 import sys
 
@@ -12,12 +12,12 @@ REQUIREMENTS_FILENAME = "requirements.txt"
 def package_installed(package_name):
     """Check if a package is already installed."""
 
-    return util.find_spec(package_name) is not None
+    installed_packages = {pkg.key for pkg in pkg_resources.working_set}
+    return package_name.lower() in installed_packages
 
 def install_package(package_name):
     if package_installed(package_name):
-        print(f"Package '{package_name}' is already installed.")
-        return
+        raise Exception(f"Package '{package_name}' is already installed.")
 
     try:
         print(f"Installing package: {package_name}")
@@ -28,12 +28,21 @@ def install_package(package_name):
 
 def get_required_packages(filename):
     with open(filename) as requirements:
-        return requirements.readlines()
+        return [line.strip() for line in requirements.readlines()]
 
 def install_missing_packages():
     requirements_path = os.path.join(CONFIG_DIRECTORY_PATH, REQUIREMENTS_FILENAME)
 
     requirements = get_required_packages(requirements_path)
 
+    print(requirements)
+
     for package in requirements:
-        install_package(package)
+        print()
+        print(f"checking {package}")
+        if not package_installed(package):
+            print(f"installing {package}")
+            install_package(package)
+
+# NOTE This runs every time this module is imported. It needs to be this way so that missing packages are installed prior to attempting to import them in main.py.
+install_missing_packages()
