@@ -1,0 +1,23 @@
+# Byte-compiled / optimized / DLL files.
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment folders (if you use venv).
+venv/
+env/
+.venv/
+
+# macOS, Linux, Windows system files.
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+
+# Jupyter notebook checkpoints.
+.ipynb_checkpoints/
+
+# Temporary files downloaded by the script.
+temp/
