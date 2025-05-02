@@ -10,9 +10,14 @@ def is_calendar_file(url):
         response = requests.head(url, allow_redirects=True)
         content_type = response.headers.get("Content-Type", "")
         is_calendar = "text/calendar" in content_type
-        return is_calendar
+
+        if is_calendar:
+            return True
+        else:
+            print(f"\tValid url but invalid file type: {content_type}")
+            return False
     except Exception as e:
-        print(f"\tError checking file type: {e}")
+        print(f"\t{e}")
         return False
 
 def download_calendar_file(url, filepath):
@@ -21,7 +26,7 @@ def download_calendar_file(url, filepath):
     Only downloads if the MIME type is 'text/calendar'.
     """
     if not is_calendar_file(url):
-        print("The file is not an .ics calendar file. Skipping download.")
+        print("\tThe file is not a calendar file. Skipping download.")
         return False
 
     try:
