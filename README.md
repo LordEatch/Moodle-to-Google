@@ -13,11 +13,13 @@ While you can simply point Google Calendar to a calendar at another url, I found
 - Filter the events from the Moodle calendar with the tags
 - Ask for a Google Calendar calendar ID
 - Add the final events to the correct calendar on Google Calendar
+- Information is stored locally too so that the next execution of the script is optionally less tedious. This info includes a token for Google account sign in, the Moodle calendar URL and the Google Calendar calendar ID.
 
 
 **Requirements:**
 - Python 3.11.9
 - API key (given by me)
+- Necessary python libraries are automatically installed when the script runs.
 
 **Setup guide:**
 [Setup guide.pdf](https://github.com/user-attachments/files/20030820/Setup.guide.pdf)
