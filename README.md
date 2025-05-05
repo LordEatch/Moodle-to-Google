@@ -25,4 +25,4 @@ While you can simply point Google Calendar to a calendar at another url, I found
 - Necessary python libraries are automatically installed when the script runs.
 
 **Setup guide:**
-[Setup guide.pdf](https://github.com/user-attachments/files/20030820/Setup.guide.pdf)
+[Setup guide.pdf](https://github.com/user-attachments/files/20049338/Setup.guide.pdf)
