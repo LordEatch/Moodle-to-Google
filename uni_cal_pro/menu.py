@@ -87,5 +87,6 @@ def input_google_calendar_id(service):
 
 def script_done():
     print(DIVIDER)
-    print("Script complete.")
+    print("Script complete. Press Enter to close.")
+    input()
     print(DIVIDER)
