@@ -3,7 +3,7 @@
 
 This Python script copies events from a Moodle calendar (often used by schools and universities) to Google Calendar after filtering unwanted events.
 
-While you can simply point Google Calendar to a calendar at another url, I found that my Moodle calendar for university had too many unnecessary events present that I wanted to remove. They were not repeating events so I would have to go through an entire year and delete them 1 by 1. This script does that for you.
+While you can simply point Google Calendar to a calendar at another url, I found that my Moodle calendar for university had too many unnecessary events present that I wanted to remove. They were not repeating events so I would have to go through an entire year and delete them 1 by 1. This script does that for you using the Google Calendar API.
 
 
 **What does the script do?**
