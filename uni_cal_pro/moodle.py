@@ -20,6 +20,9 @@ def filter_events(events, unwanted_summary_substrings):
         for substring in unwanted_summary_substrings
         if substring in e.name.lower()
         }
+    
+    for unwanted_event in unwanted_events:
+        print(f"\tRemoving event: {unwanted_event.name}.")
 
     return events.difference(unwanted_events)
 

@@ -10,7 +10,8 @@ REQUIREMENTS_FILENAME = "requirements.txt"
 
 def install_package(pypi_name):
     """Installs a package using pip."""
-    print(f"Installing {pypi_name}...")
+
+    print(f"\tInstalling {pypi_name}...")
     subprocess.check_call([sys.executable, "-m", "pip", "install", pypi_name])
 
 def install_missing_packages():
@@ -27,12 +28,12 @@ def install_missing_packages():
             try:
                 pypi_name, import_name = [x.strip() for x in requirement.split(",")]
             except ValueError:
-                print(f"Skipping malformed line: {requirement}")
+                print(f"\tSkipping malformed line: {requirement}")
                 continue
 
             try:
                 __import__(import_name)
-                print(f"{import_name} is already installed.")
+                print(f"\t{import_name} is already installed.")
             except ImportError:
                 install_package(pypi_name)
 
